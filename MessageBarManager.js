@@ -48,6 +48,11 @@ module.exports = {
     var durationToHide = this._currentMessageBarAlert.alertShown ? this._currentMessageBarAlert.state.durationToHide : 0
 
     setTimeout(() => {
+      // race condition here;
+      // no time to do something better; we need to change this library;
+      if (this._currentMessageBarAlert === null) {
+        return;
+      }
       // Show the new alert if there is a new state, otherwise
       if (newState != null) {
         // Clear current state
