@@ -63,6 +63,9 @@ module.exports = {
         this._currentMessageBarAlert.notifyAlertHiddenCallback = null
 
         setTimeout(() => {
+          if (this._currentMessageBarAlert === null) {
+            return;
+          }
           this._currentMessageBarAlert.showMessageBarAlert()
         }, 100)
       }
